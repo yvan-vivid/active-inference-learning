@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "active-inference"
+version = "0.1.0"
+description = "Experiments with Active Inference"
+authors = ["yvan-vivid <hexxiiiz@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.4"
+mypy = "^1.10.0"
+matplotlib = "^3.9.0"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.25.0"
+pytest = "^8.2.2"
+isort = "^5.13.2"
+black = "^24.4.2"
+jupyter = "^1.0.0"
+
+[tool.poe.tasks]
+type-check = "mypy active_inference tests"
+test = "pytest"
+check = ["type-check", "test"]
+
+format = "black active_inference"
+imports = "isort active_inference"
+formatting = ["format", "imports"]
+
+edit = "nvim"
+repl = "ipython"
+
+[tool.black]
+line-length = 100
+
+[tool.mypy]
+check_untyped_defs = true
+# disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+ignore_missing_imports = false
+no_implicit_optional = true
+strict_optional = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

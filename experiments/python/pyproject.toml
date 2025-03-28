@@ -17,6 +17,7 @@ pytest = "^8.2.2"
 isort = "^5.13.2"
 black = "^24.4.2"
 jupyter = "^1.0.0"
+jupyterlab-vim = "^4.1.3"
 
 [tool.poe.tasks]
 type-check = "mypy active_inference tests"
